@@ -1,6 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/adminlte.js": "/js/adminlte.js",
-    "/js/adminltepackages.js": "/js/adminltepackages.js"
+    "/backend/css/adminlte.css": "/backend/css/adminlte.css",
+    "/backend/js/adminlte.js": "/backend/js/adminlte.js",
+    "/backend/js/adminltepackages.js": "/backend/js/adminltepackages.js"
 }

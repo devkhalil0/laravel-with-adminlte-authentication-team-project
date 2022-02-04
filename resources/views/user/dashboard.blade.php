@@ -27,7 +27,6 @@
                 <div class="small-box bg-info">
                 <div class="inner">
                     <h3>150</h3>
-
                     <p>New Orders</p>
                 </div>
                 <div class="icon">
@@ -42,7 +41,6 @@
                 <div class="small-box bg-success">
                 <div class="inner">
                     <h3>53<sup style="font-size: 20px">%</sup></h3>
-
                     <p>Bounce Rate</p>
                 </div>
                 <div class="icon">
@@ -57,7 +55,6 @@
                 <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>44</h3>
-
                     <p>User Registrations</p>
                 </div>
                 <div class="icon">
@@ -72,7 +69,6 @@
                 <div class="small-box bg-danger">
                 <div class="inner">
                     <h3>65</h3>
-
                     <p>Unique Visitors</p>
                 </div>
                 <div class="icon">
@@ -120,12 +116,10 @@
                 </div><!-- /.card-body -->
                 </div>
                 <!-- /.card -->
-
                 <!-- DIRECT CHAT -->
                 <div class="card direct-chat direct-chat-primary">
                 <div class="card-header">
                     <h3 class="card-title">Direct Chat</h3>
-
                     <div class="card-tools">
                     <span title="3 New Messages" class="badge badge-primary">3</span>
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -150,7 +144,7 @@
                         <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
                         </div>
                         <!-- /.direct-chat-infos -->
-                        <img class="direct-chat-img" src="{{ asset('storage/images/user1-128x128.jpg') }}" alt="message user image">
+                        <img class="direct-chat-img" src="{{ asset('backend/images/user1-128x128.jpg') }}" alt="message user image">
                         <!-- /.direct-chat-img -->
                         <div class="direct-chat-text">
                         Is this template really for free? That's unbelievable!
@@ -158,7 +152,6 @@
                         <!-- /.direct-chat-text -->
                     </div>
                     <!-- /.direct-chat-msg -->
-
                     <!-- Message to the right -->
                     <div class="direct-chat-msg right">
                         <div class="direct-chat-infos clearfix">
@@ -166,7 +159,7 @@
                         <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
                         </div>
                         <!-- /.direct-chat-infos -->
-                        <img class="direct-chat-img" src="{{ asset('storage/images/user3-128x128.jpg') }}" alt="message user image">
+                        <img class="direct-chat-img" src="{{ asset('backend/images/user1-128x128.jpg') }}" alt="message user image">
                         <!-- /.direct-chat-img -->
                         <div class="direct-chat-text">
                         You better believe it!
@@ -174,7 +167,6 @@
                         <!-- /.direct-chat-text -->
                     </div>
                     <!-- /.direct-chat-msg -->
-
                     <!-- Message. Default to the left -->
                     <div class="direct-chat-msg">
                         <div class="direct-chat-infos clearfix">
@@ -182,7 +174,7 @@
                         <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
                         </div>
                         <!-- /.direct-chat-infos -->
-                        <img class="direct-chat-img" src="{{ asset('storage/images/user1-128x128.jpg') }}" alt="message user image">
+                        <img class="direct-chat-img" src="{{ asset('backend/images/user1-128x128.jpg') }}" alt="message user image">
                         <!-- /.direct-chat-img -->
                         <div class="direct-chat-text">
                         Working with AdminLTE on a great new app! Wanna join?
@@ -190,7 +182,6 @@
                         <!-- /.direct-chat-text -->
                     </div>
                     <!-- /.direct-chat-msg -->
-
                     <!-- Message to the right -->
                     <div class="direct-chat-msg right">
                         <div class="direct-chat-infos clearfix">
@@ -198,7 +189,7 @@
                         <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
                         </div>
                         <!-- /.direct-chat-infos -->
-                        <img class="direct-chat-img" src="{{ asset('storage/images/user3-128x128.jpg') }}" alt="message user image">
+                        <img class="direct-chat-img" src="{{ asset('backend/images/user1-128x128.jpg') }}" alt="message user image">
                         <!-- /.direct-chat-img -->
                         <div class="direct-chat-text">
                         I would love to.
@@ -206,16 +197,14 @@
                         <!-- /.direct-chat-text -->
                     </div>
                     <!-- /.direct-chat-msg -->
-
                     </div>
                     <!--/.direct-chat-messages-->
-
                     <!-- Contacts are loaded here -->
                     <div class="direct-chat-contacts">
                     <ul class="contacts-list">
                         <li>
                         <a href="#">
-                            <img class="contacts-list-img" src="{{ asset('storage/images/user1-128x128.jpg') }}" alt="User Avatar">
+                            <img class="contacts-list-img" src="{{ asset('backend/images/user1-128x128.jpg') }}" alt="User Avatar">
 
                             <div class="contacts-list-info">
                             <span class="contacts-list-name">
@@ -230,8 +219,7 @@
                         <!-- End Contact Item -->
                         <li>
                         <a href="#">
-                            <img class="contacts-list-img" src="{{ asset('storage/images/user7-128x128.jpg') }}" alt="User Avatar">
-
+                            <img class="contacts-list-img" src="{{ asset('backend/images/user1-128x128.jpg') }}" alt="User Avatar">
                             <div class="contacts-list-info">
                             <span class="contacts-list-name">
                                 Sarah Doe
@@ -245,8 +233,7 @@
                         <!-- End Contact Item -->
                         <li>
                         <a href="#">
-                            <img class="contacts-list-img" src="{{ asset('storage/images/user3-128x128.jpg') }}" alt="User Avatar">
-
+                            <img class="contacts-list-img" src="{{ asset('backend/images/user1-128x128.jpg') }}" alt="User Avatar">
                             <div class="contacts-list-info">
                             <span class="contacts-list-name">
                                 Nadia Jolie
@@ -260,8 +247,7 @@
                         <!-- End Contact Item -->
                         <li>
                         <a href="#">
-                            <img class="contacts-list-img" src="{{ asset('storage/images/user5-128x128.jpg') }}" alt="User Avatar">
-
+                            <img class="contacts-list-img" src="{{ asset('backend/images/user1-128x128.jpg') }}" alt="User Avatar">
                             <div class="contacts-list-info">
                             <span class="contacts-list-name">
                                 Nora S. Vans
@@ -275,8 +261,7 @@
                         <!-- End Contact Item -->
                         <li>
                         <a href="#">
-                            <img class="contacts-list-img" src="{{ asset('storage/images/user6-128x128.jpg') }}" alt="User Avatar">
-
+                            <img class="contacts-list-img" src="{{ asset('backend/images/user1-128x128.jpg') }}" alt="User Avatar">
                             <div class="contacts-list-info">
                             <span class="contacts-list-name">
                                 John K.
@@ -290,8 +275,7 @@
                         <!-- End Contact Item -->
                         <li>
                         <a href="#">
-                            <img class="contacts-list-img" src="{{ asset('storage/images/user8-128x128.jpg') }}" alt="User Avatar">
-
+                            <img class="contacts-list-img" src="{{ asset('backend/images/user1-128x128.jpg') }}" alt="User Avatar">
                             <div class="contacts-list-info">
                             <span class="contacts-list-name">
                                 Kenneth M.
@@ -322,7 +306,6 @@
                 <!-- /.card-footer-->
                 </div>
                 <!--/.direct-chat -->
-
                 <!-- TO DO List -->
                 <div class="card">
                 <div class="card-header">
@@ -330,7 +313,6 @@
                     <i class="ion ion-clipboard mr-1"></i>
                     To Do List
                     </h3>
-
                     <div class="card-tools">
                     <ul class="pagination pagination-sm">
                         <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
@@ -457,7 +439,6 @@
             <!-- /.Left col -->
             <!-- right col (We are only adding the ID to make the widgets sortable)-->
             <section class="col-lg-5 connectedSortable">
-
                 <!-- Map card -->
                 <div class="card bg-gradient-primary">
                 <div class="card-header border-0">
@@ -502,7 +483,6 @@
                 </div>
                 </div>
                 <!-- /.card -->
-
                 <!-- solid sales graph -->
                 <div class="card bg-gradient-info">
                 <div class="card-header border-0">
@@ -510,7 +490,6 @@
                     <i class="fas fa-th mr-1"></i>
                     Sales Graph
                     </h3>
-
                     <div class="card-tools">
                     <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -543,7 +522,6 @@
                     <div class="col-4 text-center">
                         <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
                                 data-fgColor="#39CCCC">
-
                         <div class="text-white">In-Store</div>
                     </div>
                     <!-- ./col -->
@@ -553,7 +531,6 @@
                 <!-- /.card-footer -->
                 </div>
                 <!-- /.card -->
-
                 <!-- Calendar -->
                 <div class="card bg-gradient-success">
                 <div class="card-header border-0">
@@ -602,5 +579,5 @@
     <!-- /.content -->
 @endsection
 @section('js')
-<script src="{{ asset('js/adminltepackages.js') }}"></script>
+<script src="{{ asset('backend/js/adminltepackages.js') }}"></script>
 @endsection

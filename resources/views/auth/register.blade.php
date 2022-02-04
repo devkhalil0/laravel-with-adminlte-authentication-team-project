@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('css')
+<link rel="stylesheet" href="{{ asset('backend/css/adminlte.css') }}">
 <style>
     .register-page-css{
         -ms-flex-align: center;
@@ -14,7 +15,6 @@
 
         justify-content: center;
     }
-
     @media(min-width:576px){
         .register-page-css{
         height: 0;
@@ -40,11 +40,9 @@
             height: 100vh;
         }
     }
-
 </style>
 @endsection
 @section('content')
-
 <div class="hold-transition register-page-css">
     <div class="register-box">
         <div class="card card-outline card-primary">
@@ -53,7 +51,6 @@
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Register a new membership</p>
-
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="input-group mb-3">
@@ -116,7 +113,6 @@
                     <!-- /.col -->
                     </div>
                 </form>
-
                 <div class="social-auth-links text-center">
                     <a href="#" class="btn btn-block btn-primary">
                     <i class="fab fa-facebook mr-2"></i>
@@ -127,7 +123,6 @@
                     Sign up using Google+
                     </a>
                 </div>
-
                 <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
             </div>
             <!-- /.form-box -->

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('css')
+<link rel="stylesheet" href="{{ asset('backend/css/adminlte.css') }}">
 <style>
     .login-page-css{
         -ms-flex-align: center;
@@ -14,7 +15,6 @@
 
         justify-content: center;
     }
-
     @media(min-width:576px){
         .login-page-css{
         height: 0;
@@ -40,11 +40,8 @@
             height: 100vh;
         }
     }
-
 </style>
 @endsection
-
-
 @section('content')
 <div class="hold-transition login-page-css">
     <div class="login-box bg-4">
@@ -75,15 +72,4 @@
     </div>
     <!-- /.login-box -->
     </div>
-
-
-
-
-
-
-
-
-<div class="container">
-
-</div>
 @endsection

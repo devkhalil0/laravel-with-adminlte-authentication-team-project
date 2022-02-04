@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('css')
+<link rel="stylesheet" href="{{ asset('backend/css/adminlte.css') }}">
 <style>
     .login-page-css{
         -ms-flex-align: center;
@@ -11,10 +12,8 @@
         -ms-flex-direction: column;
         flex-direction: column;
         -ms-flex-pack: center;
-
         justify-content: center;
     }
-
     @media(min-width:576px){
         .login-page-css{
         height: 0;
@@ -40,11 +39,9 @@
             height: 100vh;
         }
     }
-
 </style>
 @endsection
 @section('content')
-
 <div class="hold-transition login-page-css">
 <div class="login-box bg-4">
   <div class="login-logo">
@@ -54,7 +51,6 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
-
       <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="input-group mb-3">
@@ -95,7 +91,6 @@
           <!-- /.col -->
         </div>
       </form>
-
       <div class="social-auth-links text-center mb-3">
         <p>- OR -</p>
         <a href="#" class="btn btn-block btn-primary">
@@ -106,7 +101,6 @@
         </a>
       </div>
       <!-- /.social-auth-links -->
-
       <p class="mb-1">
         <a href="/password/reset">I forgot my password</a>
       </p>

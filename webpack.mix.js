@@ -15,10 +15,10 @@ mix.js('resources/js/app.js', 'public/js')
     .scripts([
         'node_modules/admin-lte/plugins/jquery/jquery.min.js',
         'node_modules/admin-lte/plugins/jquery-ui/jquery-ui.min.js',
-        'node_modules/admin-lte/dist/js/adminlte.js',
-        ],'public/js/adminlte.js')
-    .scripts([
         'node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js',
+        'node_modules/admin-lte/dist/js/adminlte.js',
+        ],'public/backend/js/adminlte.js')
+    .scripts([
         'node_modules/admin-lte/plugins/chart.js/Chart.min.js',
         'node_modules/admin-lte/plugins/sparklines/sparkline.js',
         'node_modules/admin-lte/plugins/jqvmap/jquery.vmap.min.js',
@@ -30,6 +30,6 @@ mix.js('resources/js/app.js', 'public/js')
         'node_modules/admin-lte/plugins/summernote/summernote-bs4.min.js',
         'node_modules/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js',
         'node_modules/admin-lte/dist/js/pages/dashboard.js',
-    ],'public/js/adminltepackages.js')
+    ],'public/backend/js/adminltepackages.js')
     .vue()
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/adminlte.scss', 'backend/css/adminlte.css');

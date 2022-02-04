@@ -3,17 +3,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Laravel With Adminlte Authentication</title>
-
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
         <!-- ==============Styles ============== -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- ============== Pages Based Css ============== -->
         @yield('css')
-
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
@@ -23,11 +19,10 @@
     <body class="antialiased">
         <div id="app" class="">
             <nav class="navbar navbar-expand-md navbar-light bg-white">
-                <a class="navbar-brand text-white font-weight-bold" href="#">Laravel</a>
+                <a class="navbar-brand font-weight-bold" href="/">Laravel</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                   </ul>
@@ -61,7 +56,6 @@
         </div>
         <!-- ============== JS ============== -->
         <script src="{{ asset('js/app.js') }}"></script>
-        <!-- ============== Pages Based JS ============== -->
         @yield('js')
     </body>
 </html>

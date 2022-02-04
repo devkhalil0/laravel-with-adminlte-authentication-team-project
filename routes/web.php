@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,18 +21,15 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-
-
-Route::get('/demo1', function () {
-    return view('user.pages.demo1');
-})->name('demo1');
-Route::get('/demo2', function () {
-    return view('user.pages.demo2');
-})->name('demo2');
+// Auth Routes
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+});
 
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//    Demo Pages
+Route::get('/demo1', [PagesController::class, 'demo1'])->name('demo1');
+Route::get('/demo1', [PagesController::class, 'demo1'])->name('demo1');
