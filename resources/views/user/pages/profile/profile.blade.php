@@ -26,7 +26,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-6">
                                 <div class="text-center">
-                                    <img id="image" class="profile-user-img img-fluid img-circle" src=" https://adlisting.zakirsoft.com/backend/image/default.png" alt="User profile picture" style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;height:150px;width:150px">
+                                    <img id="image" class="profile-user-img img-fluid img-circle" src="{{ asset(Auth::user()->profile_image_url) }}" alt="User profile picture" style="border: 3px solid #adb5bd;margin: 0 auto;padding: 3px;height:150px;width:150px">
                                 </div>
                                 <h3 class="profile-username text-center mb-3">{{ Auth()->user()->name }}</h3>
                                 <ul class="list-group list-group-unbordered mb-3">
