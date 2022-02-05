@@ -29,7 +29,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item {{ (request()->is('demo1')) || (request()->is('demo2')) ? 'menu-is-opening menu-open' : '' }}">
+          <li class="mt-1 nav-item {{ (request()->is('demo1')) || (request()->is('demo2')) ? 'menu-is-opening menu-open' : '' }}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -49,6 +49,30 @@
                 <a href="{{ url('/demo2') }}" class="nav-link {{ (request()->is('demo2')) ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Page 2</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item {{ (request()->is('student*')) ? 'menu-is-opening menu-open' : '' }}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Students
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">2</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('student.index') }}" class="nav-link {{ (request()->routeIs('student.index')) || (request()->routeIs('student.search')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Students</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('student.create') }}" class="nav-link {{ (request()->routeIs('student.create')) ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add New One</p>
                 </a>
               </li>
             </ul>

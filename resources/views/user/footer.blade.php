@@ -18,6 +18,11 @@
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Pages Based js -->
+<script>
+    setTimeout(function() {
+        $('#successMessage').fadeOut('fast');
+    }, 3000);
+</script>
 @yield('js')
 </body>
 </html>

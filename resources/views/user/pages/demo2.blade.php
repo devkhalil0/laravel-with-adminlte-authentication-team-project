@@ -1,4 +1,7 @@
 @extends('user.app')
+@section('title')
+    Demo 2
+@endsection
 @section('pagescontent')
 <!-- Content Header (Page header) -->
     <div class="content-header">

@@ -1,4 +1,7 @@
 @extends('user.app')
+@section('title')
+    Profile Edit
+@endsection
 @section('pagescontent')
 <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -142,9 +145,6 @@
             $('#password_visibility').removeClass('d-block')
         }
     });
-    setTimeout(function() {
-        $('#successMessage').fadeOut('fast');
-    }, 3000);
 </script>
 @endsection
 
