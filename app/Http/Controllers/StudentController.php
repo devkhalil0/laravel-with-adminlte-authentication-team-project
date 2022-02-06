@@ -74,7 +74,7 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
     }
@@ -85,9 +85,8 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Student $student)
     {
-        $student = Student::FindOrFail($id);
         return view('user.pages.students.edit',compact('student'));
     }
 
@@ -98,11 +97,11 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Student $student)
     {
         $request->validate([
             'name' => 'required|min:2|max:32',
-            'email' => 'required|email|unique:students,email,'.$id,
+            'email' => 'required|email|unique:students,email,'.$student->id,
         ]);
         // Validate image if want to profile image
         if($request->image){
@@ -110,8 +109,7 @@ class StudentController extends Controller
                 'image' =>  'image|mimes:jpeg,png,jpg,gif'
             ]);
         }
-        // Get student from database
-        $student = Student::FindOrFail($id);
+
         $student->name = $request->name;
         $student->email = $request->email;
         // password check
@@ -145,10 +143,8 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        // Get student from database
-        $student = Student::FindOrFail($id);
         $avatar = $student->avatar_url;
         if(file_exists($avatar)){
             if($avatar != 'backend/images/default.png'){

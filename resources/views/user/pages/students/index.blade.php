@@ -62,9 +62,6 @@
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
                                     Email
                                 </th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">
-                                    Password
-                                </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
                                     Avatar
                                 </th>
@@ -80,14 +77,12 @@
                                         <td class="dtr-control sorting_1" tabindex="0">{{ $student->id }}</td>
                                         <td>{{ $student->name }}</td>
                                         <td>{{ $student->email }}</td>
-                                        {{-- <td>{{ encrypt($student->password) }}</td> --}}
-                                        <td>Hidden</td>
                                         <td>
                                             <img src="{{ asset($student->avatar_url) }}" style="width: 20%" class="user-image img-circle elevation-2" alt="">
                                         </td>
                                         <td class="d-flex justify-content-center">
-                                            <a href="{{ route('students.edit',$student->id) }}" class="btn btn-primary btn-sm mr-1">Edit</a>
-                                            <a href="{{ route('students.destroy',$student->id) }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" class="btn btn-danger btn-sm">
+                                            <a href="{{ route('students.edit',$student) }}" class="btn btn-primary btn-sm mr-1">Edit</a>
+                                            <a href="{{ route('students.destroy',$student) }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" class="btn btn-danger btn-sm">
                                                 Delete
                                             </a>
                                             <form id="delete-form" action="{{ route('students.destroy',$student->id) }}" method="POST" class="d-none">

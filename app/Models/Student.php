@@ -14,4 +14,12 @@ class Student extends Model
         'password',
         'avatar_url'
     ];
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+    ];
 }
