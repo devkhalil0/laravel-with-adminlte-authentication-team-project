@@ -33,7 +33,7 @@
                     <div class="card-header">
                       <h3 class="card-title">Add New</h3>
                     </div>
-                    <form method="POST" action="{{ route('student.store') }}" enctype="multipart/form-data" autocomplete="off">
+                    <form method="POST" action="{{ route('students.store') }}" enctype="multipart/form-data" autocomplete="off">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
@@ -73,7 +73,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="d-flex justify-content-between">
-                                <a href="{{ route('student.index') }}" class="btn btn-danger">Back</a>
+                                <a href="{{ route('students.index') }}" class="btn btn-danger">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>

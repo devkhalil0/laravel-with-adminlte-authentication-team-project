@@ -65,7 +65,7 @@ class StudentController extends Controller
         $lastImage = 'backend/images/students/'.$imageName;
         $student->avatar_url = $lastImage;
         $student->save();
-        return redirect()->route('student.index')->with('success', 'Student Successfully Added !');
+        return redirect()->route('students.index')->with('success', 'Student Successfully Added !');
     }
 
     /**
@@ -135,7 +135,7 @@ class StudentController extends Controller
             $student->avatar_url = $lastImage;
         }
         $student->save();
-        return redirect()->route('student.index')->with('success', 'Student Successfully Updated !');
+        return redirect()->route('students.index')->with('success', 'Student Successfully Updated !');
 
     }
 

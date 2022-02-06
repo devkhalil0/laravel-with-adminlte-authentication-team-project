@@ -29,13 +29,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     // Student Crud
-    Route::get('/student/index', [StudentController::class, 'index'])->name('student.index');
-    Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
-    Route::post('/student/store', [StudentController::class, 'store'])->name('student.store');
-    Route::get('/student/edit/{id}', [StudentController::class, 'edit'])->name('student.edit');
-    Route::put('/student/update/{id}', [StudentController::class, 'update'])->name('student.update');
-    Route::delete('/student/destroy/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
-    Route::get('/student/search', [StudentController::class, 'search'])->name('student.search');
+    Route::resource('students', StudentController::class);
+    Route::get('/students/search', [StudentController::class, 'search'])->name('students.search');
 });
 
 

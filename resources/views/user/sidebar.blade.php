@@ -64,13 +64,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('student.index') }}" class="nav-link {{ (request()->routeIs('student.index')) || (request()->routeIs('student.search')) ? 'active' : '' }}">
+                <a href="{{ route('students.index') }}" class="nav-link {{ (request()->routeIs('students.index')) || (request()->routeIs('students.search')) ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Students</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('student.create') }}" class="nav-link {{ (request()->routeIs('student.create')) ? 'active' : '' }}">
+                <a href="{{ route('students.create') }}" class="nav-link {{ (request()->routeIs('students.create')) ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add New One</p>
                 </a>

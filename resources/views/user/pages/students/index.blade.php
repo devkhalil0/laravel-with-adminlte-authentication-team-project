@@ -38,8 +38,8 @@
                     <div class="card-header">
                       <h3 class="card-title">All Students</h3>
                       <div class="card-tools">
-                        <form action="{{ route('student.search') }}" method="GET" class="input-group input-group-sm" style="width: 150px;">
-                          <input type="text" name="search" @if (request()->routeIs('student.search')) value="{{ $term }}" @endif class="form-control float-right" placeholder="Search">
+                        <form action="{{ route('students.search') }}" method="GET" class="input-group input-group-sm" style="width: 150px;">
+                          <input type="text" name="search" @if (request()->routeIs('students.search')) value="{{ $term }}" @endif class="form-control float-right" placeholder="Search">
                           <div class="input-group-append">
                             <button type="submit" class="btn btn-default">
                               <i class="fas fa-search"></i>
@@ -86,11 +86,11 @@
                                             <img src="{{ asset($student->avatar_url) }}" style="width: 20%" class="user-image img-circle elevation-2" alt="">
                                         </td>
                                         <td class="d-flex justify-content-center">
-                                            <a href="{{ route('student.edit',$student->id) }}" class="btn btn-primary btn-sm mr-1">Edit</a>
-                                            <a href="{{ route('student.destroy',$student->id) }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" class="btn btn-danger btn-sm">
+                                            <a href="{{ route('students.edit',$student->id) }}" class="btn btn-primary btn-sm mr-1">Edit</a>
+                                            <a href="{{ route('students.destroy',$student->id) }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" class="btn btn-danger btn-sm">
                                                 Delete
                                             </a>
-                                            <form id="delete-form" action="{{ route('student.destroy',$student->id) }}" method="POST" class="d-none">
+                                            <form id="delete-form" action="{{ route('students.destroy',$student->id) }}" method="POST" class="d-none">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
