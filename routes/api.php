@@ -20,7 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Post Api
-Route::get('v1/post/index', [PostController::class,'index']);
-Route::post('v1/post/store', [PostController::class,'store']);
-Route::post('v1/post/update/{id}', [PostController::class,'update']);
-Route::delete('v1/post/destroy/{id}', [PostController::class,'destroy']);
+Route::resource('posts', PostController::class);

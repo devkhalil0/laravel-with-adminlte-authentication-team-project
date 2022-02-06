@@ -16,6 +16,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::latest()->paginate(15);
+        return $students;
         return view('user.pages.students.index',compact('students'));
     }
     public function search(Request $request){
@@ -53,11 +54,12 @@ class StudentController extends Controller
             'password' => 'required|min:2|max:32',
             'image' =>  'required|image|mimes:jpeg,png,jpg,gif'
         ]);
+
         // Create new one
         $student = new Student();
         $student->name = $request->name;
         $student->email = $request->email;
-        $student->password = Hash::make($request->password);
+        $student->password = $request->password;
         // avatar
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('backend/images/students/'), $imageName);
@@ -65,6 +67,7 @@ class StudentController extends Controller
         $lastImage = 'backend/images/students/'.$imageName;
         $student->avatar_url = $lastImage;
         $student->save();
+
         return redirect()->route('students.index')->with('success', 'Student Successfully Added !');
     }
 
@@ -114,10 +117,11 @@ class StudentController extends Controller
         $student->email = $request->email;
         // password check
         if($request->password){
-            $student->password = Hash::make($request->password);
+            $student->password = $request->password;
         }
          // First Check Image
          if($request->image){
+
             // if Old Image have then delete this (if isnot default one)
             $studentOldImage = $student->avatar_url;
             if(file_exists($studentOldImage)){
@@ -125,6 +129,7 @@ class StudentController extends Controller
                     unlink($studentOldImage);
                 }
             }
+
             // image Proccessing For Upload
             $imageName = time().'.'.$request->image->extension();
             $request->image->move(public_path('backend/images/students/'), $imageName);
@@ -133,6 +138,7 @@ class StudentController extends Controller
             $student->avatar_url = $lastImage;
         }
         $student->save();
+
         return redirect()->route('students.index')->with('success', 'Student Successfully Updated !');
 
     }
@@ -152,6 +158,7 @@ class StudentController extends Controller
             }
         }
         $student->delete();
+        
         return redirect()->back()->with('success', 'Student Successfully Deleted !');
     }
 }

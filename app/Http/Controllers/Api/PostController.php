@@ -17,9 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        // return
         $posts = Post::latest()->get();
-        // return response()->json(['posts' => $posts]);
 
         return PostResource::collection($posts);
     }
@@ -47,6 +45,7 @@ class PostController extends Controller
             'title' => 'required|string|min:2',
             'description' => 'required|min:6'
         ]);
+
         // if validate fails
         if ($validator->fails()) {
 
@@ -57,6 +56,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->description = $request->description;
         $post->save();
+
         return response()->json(['success' => 'Post Created !']);
     }
 
@@ -96,6 +96,7 @@ class PostController extends Controller
             'title' => 'required|string|min:2',
             'description' => 'required|min:6'
         ]);
+
         // if validate fails
         if ($validator->fails()) {
 
@@ -106,6 +107,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->description = $request->description;
         $post->save();
+
         return response()->json(['success' => 'Post Updated !']);
     }
 
@@ -119,6 +121,7 @@ class PostController extends Controller
     {
         $post = Post::FindOrFail($id);
         $post->delete();
+        
         return response()->json(['success' => 'Post Deleted !']);
     }
 }
