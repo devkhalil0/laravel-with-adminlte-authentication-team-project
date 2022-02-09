@@ -36,7 +36,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/students/verify/email/{token}', [StudentController::class, 'verifyEmailWithToken'])->name('students.verify.email.token');
 });
 
-
 //    Demo Pages
 Route::get('/demo1', [PagesController::class, 'demo1'])->name('demo1');
 Route::get('/demo2', [PagesController::class, 'demo2'])->name('demo2');
