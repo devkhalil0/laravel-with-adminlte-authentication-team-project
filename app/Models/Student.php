@@ -5,15 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Notifications\Notifiable;
 
 class Student extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
+
     protected $fillable = [
         'name',
         'email',
         'password',
-        'avatar_url'
+        'avatar_url',
+        'email_verified_at',
+        'personal_token',
     ];
     /**
      * The attributes that should be hidden for serialization.
@@ -36,14 +40,14 @@ class Student extends Model
     }
 
     // accessor practice
-    // public function getNameAttribute($name)
-    // {
-    //     return ucfirst($name);
-    // }
-
     public function getNameAttribute($name)
     {
-        return "Name:".($name);
+        return ucfirst($name);
+    }
+
+    public function getEmailAttribute($email)
+    {
+        return Str::lower($email);
     }
 
 }

@@ -62,6 +62,9 @@
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
                                     Email
                                 </th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">
+                                    Email Verified Status
+                                </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">
                                     Avatar
                                 </th>
@@ -77,6 +80,17 @@
                                         <td class="dtr-control sorting_1" tabindex="0">{{ $student->id }}</td>
                                         <td>{{ $student->name }}</td>
                                         <td>{{ $student->email }}</td>
+                                        <td>
+                                            @if ($student->email_verified_at == null)
+                                                <a href="{{ route('students.emailVerify',$student) }}" class="btn btn-block btn-outline-warning btn-xs">
+                                                    Not Verified
+                                                </a>
+                                            @else
+                                                <button type="button" class="btn btn-block btn-outline-success bg-success btn-xs">
+                                                    Verified
+                                                </button>
+                                            @endif
+                                        </td>
                                         <td>
                                             <img src="{{ asset($student->avatar_url) }}" style="width: 20%" class="user-image img-circle elevation-2" alt="">
                                         </td>

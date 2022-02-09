@@ -31,6 +31,9 @@ Route::group(['middleware' => ['auth']], function () {
     // Student Crud
     Route::resource('students', StudentController::class);
     Route::get('/students/search', [StudentController::class, 'search'])->name('students.search');
+    Route::get('/students/email/verify/{student}', [StudentController::class, 'emailVerify'])->name('students.emailVerify');
+    Route::get('/students/email/verify/link/{student}', [StudentController::class, 'sendLink'])->name('students.sendLink');
+    Route::get('/students/verify/email/{token}', [StudentController::class, 'verifyEmailWithToken'])->name('students.verify.email.token');
 });
 
 

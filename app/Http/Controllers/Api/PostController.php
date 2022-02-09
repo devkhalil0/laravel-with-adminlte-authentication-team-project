@@ -15,9 +15,56 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::latest()->get();
+
+        $user = auth('api')->user();
+        $query = Wishlist::where('customer_id',$user->id)->with('ad');
+
+        if($search = $request->input('search')){
+
+                $query->where('customer_id', 'LIKE', "%$search%");
+        }
+
+       if($sort = $request->input('sort')){
+
+            $query->orderBy('id',$sort);
+        }
+
+        $perPage = '';
+        if($request->perPage){
+            $perPage = $request->perPage;
+        }else{
+            $perPage = 9;
+        }
+
+        $page = $request->input('page',1);
+        $total = $query->count();
+
+        $result = $query->offset( ($page -1 ) * $perPage)->limit($perPage)->get();
+
+        return response()->json([
+
+            'success' => 'Data fetch success',
+            'data' => $result,
+            'total' => $total,
+            'last_page' => ceil( $total / $perPage)
+
+        ], 200);
+
+
+
+
+
+
+
+
+        
+        $posts = Post::query();
+
+        if($search = $request->input('search')){
+
+        }
 
         return PostResource::collection($posts);
     }
@@ -121,7 +168,7 @@ class PostController extends Controller
     {
         $post = Post::FindOrFail($id);
         $post->delete();
-        
+
         return response()->json(['success' => 'Post Deleted !']);
     }
 }

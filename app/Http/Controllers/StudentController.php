@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use Carbon\Carbon;
+use App\Notifications\EmailVerifyNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 
 class StudentController extends Controller
 {
@@ -16,20 +20,57 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::latest()->paginate(15);
-        return $students;
+
         return view('user.pages.students.index',compact('students'));
     }
+
     public function search(Request $request){
+
         $term = $request->search;
+
         $students = Student::query()
             ->where('name', 'LIKE', "%{$term}%")
             ->orWhere('email', 'LIKE', "%{$term}%")
             ->orWhere('id', 'LIKE', "%{$term}%")
             ->latest()->paginate(15);
             $students->appends($request->all());
+
         return view('user.pages.students.index',compact('students','term'));
     }
 
+    public function emailVerify(Student $student){
+
+        return view('user.pages.students.email-verify',compact('student'));
+    }
+
+    public function sendLink(Student $student){
+
+        $student->personal_token = Str::random(32);
+        $student->save();
+
+        // Make Notify
+        Notification::route('mail' , $student->email)->notify(new EmailVerifyNotification($student));
+        
+        return redirect()->back()->with('resent', 'Resend Link');
+
+    }
+
+    public function verifyEmailWithToken($token = null){
+
+        $student = Student::where('personal_token',$token)->first();
+
+        if($student == true ) {
+
+            $student->email_verified_at = Carbon::now();
+            $student->personal_token = null;
+            $student->save();
+
+            return redirect()->route('students.index')->with('success', 'Email Is Verified');
+        }else{
+
+            return abort(401);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -39,7 +80,6 @@ class StudentController extends Controller
     {
         return view('user.pages.students.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -70,7 +110,6 @@ class StudentController extends Controller
 
         return redirect()->route('students.index')->with('success', 'Student Successfully Added !');
     }
-
     /**
      * Display the specified resource.
      *
@@ -81,7 +120,6 @@ class StudentController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -152,13 +190,14 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $avatar = $student->avatar_url;
+
         if(file_exists($avatar)){
             if($avatar != 'backend/images/default.png'){
                 unlink($avatar);
             }
         }
         $student->delete();
-        
+
         return redirect()->back()->with('success', 'Student Successfully Deleted !');
     }
 }
