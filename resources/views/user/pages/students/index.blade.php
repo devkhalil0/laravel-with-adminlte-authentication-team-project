@@ -6,21 +6,7 @@
 @endsection
 @section('pagescontent')
 <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                <h1 class="m-0">Students!</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Students</li>
-                </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
+    <x-page-header data1="Students!" data2="Home" data3="Students" />
     <!-- /.content-header -->
     <!-- Main content -->
     <section class="content">
