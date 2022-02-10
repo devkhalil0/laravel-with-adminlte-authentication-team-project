@@ -5,6 +5,7 @@ namespace Modules\Blog\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Blog\Entities\Blog;
 
 class BlogController extends Controller
 {
@@ -14,7 +15,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blog::index');
+        $blogs = Blog::latest()->paginate(15);
+        return view('blog::index',compact('blogs'));
     }
 
     /**

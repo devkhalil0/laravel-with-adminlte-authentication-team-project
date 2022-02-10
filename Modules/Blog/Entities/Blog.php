@@ -10,7 +10,7 @@ class Blog extends Model
     use HasFactory;
 
     protected $fillable = [];
-    
+
     protected static function newFactory()
     {
         return \Modules\Blog\Database\factories\BlogFactory::new();
