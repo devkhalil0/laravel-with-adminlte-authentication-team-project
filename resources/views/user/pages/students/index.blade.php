@@ -115,11 +115,10 @@
                             </div>
                         </div>
                     <!-- /.card-body -->
-                  </div>
+                    </div>
                   <!-- /.card -->
                 </div>
             </div>
         </div>
     </section>
-    <!-- /.content -->
 @endsection

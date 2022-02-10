@@ -8,7 +8,7 @@ class MyHelperController extends Controller
 {
     public function checkMyHelper(){
 
-        $name = nameFirstLetterCap("user1");
+        $name = nameFirstLetterCap("user2");
         $nameUpper = nameUpper("user1");
         $arr = myArr();
 

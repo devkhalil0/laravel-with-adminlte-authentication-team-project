@@ -10,73 +10,26 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="{{ route('dashboard') }}" class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-          <li class="mt-1 nav-item {{ (request()->is('demo1')) || (request()->is('demo2')) ? 'menu-is-opening menu-open' : '' }}">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Demo Pages
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ url('/demo1') }}" class="nav-link {{ (request()->is('demo1')) ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Page 1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('/demo2') }}" class="nav-link {{ (request()->is('demo2')) ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Page 2</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item {{ (request()->is('student*')) ? 'menu-is-opening menu-open' : '' }}">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Students
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('students.index') }}" class="nav-link {{ (request()->routeIs('students.index')) || (request()->routeIs('students.search')) ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>All Students</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('students.create') }}" class="nav-link {{ (request()->routeIs('students.create')) ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add New One</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+            <x-single-li route="{{ route('dashboard') }}" activeClass="{{ (request()->is('dashboard')) ? 'active' : '' }}" title="Dashboard" />
+            <x-single-li route="#" activeClass="" title="Widgets">
+                    <span class='right badge badge-danger'>New</span>
+            </x-single-li>
+            <x-dropdown-li
+                    dropdownActive="
+                                {{ (request()->is('demo1')) || (request()->is('demo2')) ? 'menu-is-opening menu-open' : '' }}"
+                    title="Demo Pages"
+                    dropdownAmount="2">
+                    <x-dropdown-li-single route="{{ url('/demo1') }}" activeClass="{{ (request()->is('demo1')) ? 'active' : '' }}" title="Page 1" />
+                    <x-dropdown-li-single route="{{ url('/demo2') }}" activeClass="{{ (request()->is('demo2')) ? 'active' : '' }}" title="Page 2" />
+            </x-dropdown-li>
+            <x-dropdown-li
+                    dropdownActive="
+                                {{ (request()->is('student*')) ? 'menu-is-opening menu-open' : '' }}"
+                    title="Students"
+                    dropdownAmount="2">
+                    <x-dropdown-li-single route="{{ route('students.index') }}" activeClass="{{ (request()->routeIs('students.index')) || (request()->routeIs('students.search')) ? 'active' : '' }}" title="All Students" />
+                    <x-dropdown-li-single route="{{ route('students.create') }}" activeClass="{{ (request()->routeIs('students.create')) ? 'active' : '' }}" title="Add New One" />
+            </x-dropdown-li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
