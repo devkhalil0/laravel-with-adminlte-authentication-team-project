@@ -1,7 +1,7 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
-
-Route::prefix('blog')->group(function() {
-
-    Route::resource('/', 'BlogController');
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('/blogs', 'BlogController');
+    Route::get('/blog/search', 'BlogController@search')->name('blogs.search');
 });

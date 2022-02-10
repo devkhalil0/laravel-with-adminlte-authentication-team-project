@@ -10,7 +10,7 @@
     <!-- /.content-header -->
     <!-- Main content -->
     <section class="content">
-        <x-data-table tableTitle="All Students" :dataList="$students">
+        <x-data-table tableTitle="All Students" :dataList="$students" searchRoute="{{ route('students.search') }}" :term="request()->routeIs('students.search') ? $term : ''">
             <thead>
                 <tr>
                     <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">

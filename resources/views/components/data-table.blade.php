@@ -12,14 +12,14 @@
             <div class="card-header">
               <h3 class="card-title">{{ $tableTitle }}</h3>
               <div class="card-tools">
-                {{-- <form action="{{ route('students.search') }}" method="GET" class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="search" @if (request()->routeIs('students.search')) value="{{ $term }}" @endif class="form-control float-right" placeholder="Search">
+                <form action="{{ $searchRoute }}" method="GET" class="input-group input-group-sm" style="width: 150px;">
+                  <input type="text" name="search" value="{{ $term }}" class="form-control float-right" placeholder="Search">
                   <div class="input-group-append">
                     <button type="submit" class="btn btn-default">
                       <i class="fas fa-search"></i>
                     </button>
                   </div>
-                </form> --}}
+                </form>
               </div>
             </div>
             <!-- /.card-header -->

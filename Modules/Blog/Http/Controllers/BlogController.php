@@ -13,12 +13,24 @@ class BlogController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+
+    public function index(Request $request)
     {
         $blogs = Blog::latest()->paginate(15);
         return view('blog::index',compact('blogs'));
     }
+    public function search(Request $request){
 
+        $term = $request->search;
+        $blogs = Blog::query()
+            ->where('title', 'LIKE', "%{$term}%")
+            ->orWhere('body', 'LIKE', "%{$term}%")
+            ->latest()->paginate(15);
+        $blogs->appends($request->all());
+
+        return view('blog::index',compact('blogs','term'));
+
+    }
     /**
      * Show the form for creating a new resource.
      * @return Renderable
@@ -35,7 +47,18 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        Blog::create([
+            'title' => $request->title,
+            'body' => $request->body,
+        ]);
+
+        return redirect()->route('blogs.index')->with('success' , 'Blog Created !');
+
     }
 
     /**
@@ -43,9 +66,9 @@ class BlogController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show(Blog $blog)
     {
-        return view('blog::show');
+
     }
 
     /**
@@ -53,9 +76,9 @@ class BlogController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit(Blog $blog)
     {
-        return view('blog::edit');
+        return view('blog::edit',compact('blog'));
     }
 
     /**
@@ -64,9 +87,19 @@ class BlogController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, BLog $blog)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        $blog->update([
+            'title' => $request->title,
+            'body' => $request->body,
+        ]);
+
+        return redirect()->route('blogs.index')->with('success' , 'Blog Updated !');
     }
 
     /**
@@ -74,8 +107,10 @@ class BlogController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+
+        return redirect()->route('blogs.index')->with('success' , 'Blog Deleted !');
     }
 }

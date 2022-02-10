@@ -37,17 +37,17 @@
             <!--\\ Module Dropdown // -->
             <x-dropdown-li
                     dropdownActive="
-                                {{ (request()->is('blog*')) ? 'menu-is-opening menu-open' : '' }}"
+                                {{ (request()->is('blogs*')) ? 'menu-is-opening menu-open' : '' }}"
                     title="Modules"
                     dropdownAmount="1">
                     <!--\\ Blog Module Dropdown // -->
                     <x-dropdown-li
                         dropdownActive="
-                                    {{ (request()->is('blog*')) ? 'menu-is-opening menu-open' : '' }}"
+                                    {{ (request()->is('blogs*')) ? 'menu-is-opening menu-open' : '' }}"
                         title="Blogs"
                         dropdownAmount="2">
-                        <x-dropdown-li-single route="{{ url('blog') }}" activeClass="{{ (request()->routeIs('blog.index')) || (request()->routeIs('blog.search')) ? 'active' : '' }}" title="All Blogs" />
-                        <x-dropdown-li-single route="{{ url('blog/create') }}" activeClass="{{ (request()->routeIs('blog.create')) ? 'active' : '' }}" title="Add New One" />
+                        <x-dropdown-li-single route="{{ route('blogs.index') }}" activeClass="{{ (request()->routeIs('blogs.index')) || (request()->routeIs('blogs.search')) ? 'active' : '' }}" title="All Blogs" />
+                        <x-dropdown-li-single route="{{ route('blogs.create') }}" activeClass="{{ (request()->routeIs('blogs.create')) ? 'active' : '' }}" title="Add New One" />
                     </x-dropdown-li>
             </x-dropdown-li>
         </ul>

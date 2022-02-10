@@ -10,7 +10,7 @@
     <!-- /.content-header -->
     <!-- Main content -->
     <section class="content">
-        <x-data-table tableTitle="All Blogs" :dataList="$blogs">
+        <x-data-table tableTitle="All Blogs" :dataList="$blogs" searchRoute="{{ route('blogs.search') }}" :term="request()->routeIs('blogs.search') ? $term : ''">
             <thead>
                 <tr>
                     <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
@@ -37,11 +37,11 @@
                                 {{ Str::limit($blog->body, 20, '...') }}
                             </td>
                             <td class="d-flex justify-content-center">
-                                <a href="{{ route('students.edit',$blog) }}" class="btn btn-primary btn-sm mr-1">Edit</a>
-                                <a href="{{ route('students.destroy',$blog) }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" class="btn btn-danger btn-sm">
+                                <a href="{{ route('blogs.edit',$blog) }}" class="btn btn-primary btn-sm mr-1">Edit</a>
+                                <a href="{{ route('blogs.destroy',$blog) }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" class="btn btn-danger btn-sm">
                                     Delete
                                 </a>
-                                <form id="delete-form" action="{{ route('students.destroy',$blog->id) }}" method="POST" class="d-none">
+                                <form id="delete-form" action="{{ route('blogs.destroy',$blog->id) }}" method="POST" class="d-none">
                                     @csrf
                                     @method('DELETE')
                                 </form>

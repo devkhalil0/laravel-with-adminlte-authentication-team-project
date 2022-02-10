@@ -14,11 +14,15 @@ class DataTable extends Component
 
     public $dataList;
     public $tableTitle;
+    public $searchRoute;
+    public $term;
 
-    public function __construct($dataList, $tableTitle)
+    public function __construct($dataList, $tableTitle, $searchRoute, $term)
     {
         $this->dataList = $dataList;
         $this->tableTitle = $tableTitle;
+        $this->searchRoute = $searchRoute;
+        $this->term = $term;
     }
 
     /**
