@@ -43,8 +43,9 @@ class ChartController extends Controller
         foreach($StudentsArr as $student){
             $userJoiningData[] = $student;
         }
+        // return $StudentsArr;
         $StudentsArr = json_encode($userJoiningData);
-        
+
         return view('chart::student-joining-data',compact('StudentsArr'));
 
     }

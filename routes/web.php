@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyHelperController;
 use App\Http\Controllers\PagesController;
@@ -29,6 +30,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/students/email/verify/link/{student}', [StudentController::class, 'sendLink'])->name('students.sendLink');
     Route::get('/students/verify/email/{token}', [StudentController::class, 'verifyEmailWithToken'])->name('students.verify.email.token');
 });
+
+//  Admin Routes
+Route::group(['as'=>'admin.','prefix' => 'admin','middleware'=>['auth']], function () {
+
+    Route::get('/dashboard',[AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/all/users',[AdminDashboardController::class, 'allUsers'])->name('all.users');
+
+});
+
 
 Route::get('/myhelper',[MyHelperController::class, 'checkMyHelper']);
 

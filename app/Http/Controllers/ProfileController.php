@@ -30,7 +30,7 @@ class ProfileController extends Controller
     public function update(Request $request){
 
         // Validate primary data
-      $errors =  $request->validate([
+        $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:32'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.auth()->id()],
         ]);
