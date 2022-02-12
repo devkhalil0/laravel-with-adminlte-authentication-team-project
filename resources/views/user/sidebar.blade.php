@@ -37,7 +37,7 @@
             <!--\\ Module Dropdown // -->
             <x-dropdown-li
                     dropdownActive="
-                                {{ (request()->is('blogs*')) ? 'menu-is-opening menu-open' : '' }}"
+                                {{ (request()->is('blogs*')) || (request()->is('chart*')) ? 'menu-is-opening menu-open' : '' }}"
                     title="Modules"
                     dropdownAmount="1">
                     <!--\\ Blog Module Dropdown // -->
@@ -48,6 +48,14 @@
                         dropdownAmount="2">
                         <x-dropdown-li-single route="{{ route('blogs.index') }}" activeClass="{{ (request()->routeIs('blogs.index')) || (request()->routeIs('blogs.search')) ? 'active' : '' }}" title="All Blogs" />
                         <x-dropdown-li-single route="{{ route('blogs.create') }}" activeClass="{{ (request()->routeIs('blogs.create')) ? 'active' : '' }}" title="Add New One" />
+                    </x-dropdown-li>
+                    <!--\\ Chart Module Dropdown // -->
+                    <x-dropdown-li
+                        dropdownActive="
+                                    {{ (request()->is('chart*')) ? 'menu-is-opening menu-open' : '' }}"
+                        title="Chart"
+                        dropdownAmount="1">
+                        <x-dropdown-li-single route="{{ route('chart') }}" activeClass="{{ (request()->routeIs('chart')) ? 'active' : '' }}" title="Student Joining Data" />
                     </x-dropdown-li>
             </x-dropdown-li>
         </ul>
