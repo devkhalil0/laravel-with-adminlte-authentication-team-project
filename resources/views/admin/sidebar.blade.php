@@ -11,26 +11,19 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
            <!--\\ dashboard // -->
-            <x-single-li route="{{ route('admin.dashboard') }}" activeClass="{{ (request()->is('admin.dashboard')) ? 'active' : '' }}" title="Dashboard" />
+            <x-single-li route="{{ route('admin.dashboard') }}" activeClass="{{ (request()->routeIs('admin.dashboard')) ? 'active' : '' }}" title="Dashboard" />
             <!--\\ Widgets // -->
             <x-single-li route="#" activeClass="" title="Widgets">
                     <span class='right badge badge-danger'>New</span>
             </x-single-li>
-            <!--\\ Demo Dropdown // -->
-            <x-dropdown-li
-                    dropdownActive="#"
-                    title="Demo Pages"
-                    dropdownAmount="2">
-                    <x-dropdown-li-single route="#" activeClass="#" title="Page 1" />
-                    <x-dropdown-li-single route="#" activeClass="#" title="Page 2" />
-            </x-dropdown-li>
             <!--\\ User & Role Dropdown // -->
             <x-dropdown-li
-                    dropdownActive="#"
+                    dropdownActive="
+                            {{ (request()->routeIs('admin.users*')) || (request()->routeIs('admin.roles*')) ? 'menu-is-opening menu-open' : '' }}"
                     title="User & Role"
                     dropdownAmount="2">
-                    <x-dropdown-li-single route="{{ route('admin.all.users') }}" activeClass="#" title="All Users" />
-                    <x-dropdown-li-single route="#" activeClass="#" title="All Roles" />
+                    <x-dropdown-li-single route="{{ route('admin.users.index') }}" activeClass="{{ (request()->routeIs('admin.users.index')) ? 'active' : '' }}" title="All Users" />
+                    <x-dropdown-li-single route="{{ route('admin.roles.index') }}" activeClass="{{ (request()->routeIs('admin.roles.index')) ? 'active' : '' }}" title="All Roles" />
             </x-dropdown-li>
         </ul>
       </nav>

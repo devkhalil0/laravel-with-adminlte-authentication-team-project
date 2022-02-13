@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyHelperController;
 use App\Http\Controllers\PagesController;
@@ -15,10 +18,11 @@ Route::get('/', function () {
 
     return view('home');
 });
+Route::get('/redirect', [Controller::class, 'redirect']);
 
 Auth::routes();
 // Auth Routes
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth','role:user']], function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,16 +36,17 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 //  Admin Routes
-Route::group(['as'=>'admin.','prefix' => 'admin','middleware'=>['auth']], function () {
+Route::group(['as'=>'admin.','prefix' => 'admin','middleware' => ['auth','role:superadmin|admin']], function () {
 
     Route::get('/dashboard',[AdminDashboardController::class, 'index'])->name('dashboard');
-    Route::get('/all/users',[AdminDashboardController::class, 'allUsers'])->name('all.users');
+    Route::resource('/all/users',AdminUserController::class);
+    // for roles
+    Route::resource('roles',RoleController::class);
 
 });
 
 
 Route::get('/myhelper',[MyHelperController::class, 'checkMyHelper']);
-
 //    Demo Pages
 Route::get('/demo1', [PagesController::class, 'demo1'])->name('demo1');
 Route::get('/demo2', [PagesController::class, 'demo2'])->name('demo2');

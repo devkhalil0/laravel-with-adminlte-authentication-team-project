@@ -63,15 +63,26 @@
                                                 <td class="dtr-control sorting_1" tabindex="0">{{ $user->id }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>Role</td>
+                                                <td>
+                                                    @if($user->roles->count() > 0)
+                                                        @foreach ($user->roles as $role)
+                                                            <div class="p-2 badge badge-success">
+                                                                {{ $role->name }}
+                                                            </div>
+                                                        @endforeach
+                                                        @else
+                                                        Empty
+                                                    @endif
+                                                </td>
                                                 <td class="d-flex justify-content-center">
-                                                    <a href="{{ route('students.edit',$user) }}" class="btn btn-primary btn-sm mr-1">Edit</a>
-                                                    <a href="{{ route('students.destroy',$user) }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();" class="btn btn-danger btn-sm">
-                                                        Delete
-                                                    </a>
-                                                    <form id="delete-form" action="{{ route('students.destroy',$user->id) }}" method="POST" class="d-none">
+                                                    <a href="{{ route('admin.users.edit',$user) }}" class="btn btn-primary btn-sm mr-1">Edit</a>
+
+                                                    <form id="ddelete-form" action="{{ route('admin.users.destroy',$user->id) }}" method="POST" class="">
                                                         @csrf
                                                         @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm">
+                                                            Delete
+                                                        </button>
                                                     </form>
                                                 </td>
                                             </tr>

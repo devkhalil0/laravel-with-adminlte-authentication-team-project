@@ -14,10 +14,4 @@ class AdminDashboardController extends Controller
 
         return view('admin.dashboard');
     }
-    public function allUsers(){
-
-        $users = User::latest()->paginate(15);
-
-        return view('admin.pages.user-role.allusers',compact('users'));
-    }
 }

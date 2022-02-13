@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/backend/css/adminlte.css": "/backend/css/adminlte.css",
     "/backend/js/adminlte.js": "/backend/js/adminlte.js",
-    "/backend/js/adminltepackages.js": "/backend/js/adminltepackages.js"
+    "/backend/js/adminltepackages.js": "/backend/js/adminltepackages.js",
+    "/backend/js/adminltemultiselect.js": "/backend/js/adminltemultiselect.js"
 }

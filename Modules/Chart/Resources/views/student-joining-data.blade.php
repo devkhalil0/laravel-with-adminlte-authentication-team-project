@@ -73,6 +73,32 @@
             </div>
         </div>
     </section>
+    <!-- =========  Comparison Chart ==========  -->
+    <section class="content">
+        <div class="container-fluid text-center">
+            <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Student Joining Data 2022</h3>
+                      <div class="card-tools">
+                         <!-- // -->
+                      </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0 mt-2">
+                        <div id="ComparisonChart"></div>
+                    </div>
+                    <div class="d-flex p-4">
+                        <div class="btn px-4 p-2 btn-outline-primary btn-xs">Income: $333 </div>
+                        <div class="btn px-4 p-2 btn-outline-primary btn-xs ml-4">Expense: $333 </div>
+                    </div>
+                    </div>
+                  <!-- /.card -->
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -131,7 +157,6 @@
         chart.render();
 
 </script>
-
 <script>
     var phpData = {!! $StudentsArr !!};
 
@@ -186,6 +211,31 @@
          };
          var chart = new ApexCharts(document.querySelector("#StudentJoiningChart"), options);
          chart.render();
+</script>
+<script>
+        var options = {
+          series: [44, 55],
+          chart: {
+          width: 380,
+          type: 'pie',
+        },
+        labels: ['Income','Expense'],
+        colors:["#008000", "#FF0000"],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#ComparisonChart"), options);
+        chart.render();
 </script>
 @endsection
 

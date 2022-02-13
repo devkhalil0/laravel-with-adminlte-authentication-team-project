@@ -30,6 +30,23 @@ mix.js('resources/js/app.js', 'public/js')
         'node_modules/admin-lte/plugins/summernote/summernote-bs4.min.js',
         'node_modules/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js',
         'node_modules/admin-lte/dist/js/pages/dashboard.js',
+
+
     ],'public/backend/js/adminltepackages.js')
+    .scripts([
+        'node_modules/admin-lte/plugins/select2/js/select2.full.min.js',
+        'node_modules/admin-lte/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js',
+        'node_modules/admin-lte/plugins/moment/moment.min.js',
+
+        'node_modules/admin-lte/plugins/inputmask/jquery.inputmask.min.js',
+
+        'node_modules/admin-lte/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js',
+        'node_modules/admin-lte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+        'node_modules/admin-lte/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
+        'node_modules/admin-lte/plugins/bs-stepper/js/bs-stepper.min.js',
+        'node_modules/admin-lte/plugins/dropzone/min/dropzone.min.js',
+        'node_modules/admin-lte/dist/js/adminlte.min.js',
+
+    ],'public/backend/js/adminltemultiselect.js')
     .vue()
     .sass('resources/sass/adminlte.scss', 'backend/css/adminlte.css');
