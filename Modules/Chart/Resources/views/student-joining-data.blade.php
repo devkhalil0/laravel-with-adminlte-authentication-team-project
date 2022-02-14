@@ -100,8 +100,8 @@
                         <div id="ComparisonChart" class="mt-4 mb-4"></div>
                     </div>
                     <div class="d-flex justify-content-center p-4">
-                        <div class="btn px-4 p-2 btn-outline-primary btn-xs" id="income"></div>
-                        <div class="btn px-4 p-2 btn-outline-primary btn-xs ml-4" id="expense"></div>
+                        <div class="list-group-item" id="income"></div>
+                        <div class="list-group-item ml-4" id="expense"></div>
                     </div>
                     </div>
                   <!-- /.card -->

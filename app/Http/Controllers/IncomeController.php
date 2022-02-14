@@ -80,13 +80,14 @@ class IncomeController extends Controller
                     $incomeAmount += $t->amount;
                 }
 
-                $expenseAmount = 0;
-                foreach($expenseLastweek as $t){
-                    $expenseAmount += $t->amount;
-                }
+            $expenseAmount = 0;
+            foreach($expenseLastweek as $t){
+                $expenseAmount += $t->amount;
+            }
 
-                return response()->json(['income' => $incomeAmount, 'expense' => $expenseAmount ]);
+            return response()->json(['income' => $incomeAmount, 'expense' => $expenseAmount ]);
         }
+
         // this month
         if($request->value == "thismonth"){
 
