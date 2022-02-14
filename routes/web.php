@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\MyHelperController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
@@ -33,6 +34,8 @@ Route::group(['middleware' => ['auth','role:user']], function () {
     Route::get('/students/email/verify/{student}', [StudentController::class, 'emailVerify'])->name('students.emailVerify');
     Route::get('/students/email/verify/link/{student}', [StudentController::class, 'sendLink'])->name('students.sendLink');
     Route::get('/students/verify/email/{token}', [StudentController::class, 'verifyEmailWithToken'])->name('students.verify.email.token');
+    // comparison chart
+    Route::post('/expense/income/data',[IncomeController::class, 'comparisonData']);
 });
 
 //  Admin Routes

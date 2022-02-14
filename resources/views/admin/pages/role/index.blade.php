@@ -88,7 +88,7 @@
         </section>
     @endif
      <!--  Crate Option   -->
-     @can('role.create')
+     @if(auth()->user()->can('role.create') || auth()->user()->can('role.update'))
         @if(request()->routeIs('admin.roles.create') || request()->routeIs('admin.roles.edit'))
             <section class="content">
                 <div class="container-fluid">
@@ -143,7 +143,7 @@
                 </div>
             </section>
         @endif
-     @endcan
+     @endif
 @endsection
 
 @section('js')

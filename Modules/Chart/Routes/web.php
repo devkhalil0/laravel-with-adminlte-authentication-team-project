@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth','role:user']], function () {
     Route::prefix('chart')->group(function() {
         Route::get('/', 'ChartController@index')->name('chart');
     });
