@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\StudentsExport;
 use App\Models\Student;
 use Carbon\Carbon;
 use App\Notifications\EmailVerifyNotification;
@@ -9,6 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UsersExport;
+use App\Http\Resources\StudentResource;
+use PDF;
 
 class StudentController extends Controller
 {
@@ -50,7 +55,7 @@ class StudentController extends Controller
 
         // Make Notify
         Notification::route('mail' , $student->email)->notify(new EmailVerifyNotification($student));
-        
+
         return redirect()->back()->with('resent', 'Resend Link');
 
     }
@@ -199,5 +204,49 @@ class StudentController extends Controller
         $student->delete();
 
         return redirect()->back()->with('success', 'Student Successfully Deleted !');
+    }
+
+    public function download(Request $request){
+
+
+        // return response()->json($request);
+
+
+        // if type csv
+        if($request->type == "excel"){
+
+            $amount = $request->amount ? $request->amount : 5;
+            $from = $request->from;
+
+            return Excel::download(new StudentsExport($amount,$from), 'students-collection.xlsx');
+
+        // if type excel
+        }elseif($request->type == "csv"){
+
+            $amount = $request->amount ? $request->amount : 5;
+            $from = $request->from;
+
+            return Excel::download(new StudentsExport($amount,$from), 'students-collection.csv');
+
+        }
+        // if type pdf
+        else{
+
+            $amount = $request->amount ? $request->amount : 5;
+
+            if($request->from == 'latest'){
+
+                $students = Student::latest()->select('id','name','email','created_at')->limit($amount)->get();
+            }else{
+
+                $students = Student::oldest()->select('id','name','email','created_at')->limit($amount)->get();
+            }
+
+            $pdf = PDF::loadView('user.pages.students.csv-excel-pdf.makepdf',compact('students'));
+            return $pdf->download('students.pdf');
+
+        }
+
+
     }
 }

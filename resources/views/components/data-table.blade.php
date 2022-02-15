@@ -10,8 +10,13 @@
                 @endif
             </div>
             <div class="card-header">
-              <h3 class="card-title">{{ $tableTitle }}</h3>
-              <div class="card-tools">
+              <h3 class="card-title d-flex text-center">
+                    @yield('extra')
+                    <div class="nav-link">
+                        {{ $tableTitle }}
+                    </div>
+                </h3>
+              <div class="card-tools nav-link">
                 <form action="{{ $searchRoute }}" method="GET" class="input-group input-group-sm" style="width: 150px;">
                   <input type="text" name="search" value="{{ $term }}" class="form-control float-right" placeholder="Search">
                   <div class="input-group-append">

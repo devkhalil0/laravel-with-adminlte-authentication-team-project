@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth','role:user']], function () {
     Route::get('/students/email/verify/{student}', [StudentController::class, 'emailVerify'])->name('students.emailVerify');
     Route::get('/students/email/verify/link/{student}', [StudentController::class, 'sendLink'])->name('students.sendLink');
     Route::get('/students/verify/email/{token}', [StudentController::class, 'verifyEmailWithToken'])->name('students.verify.email.token');
+        // About Student List Download
+    Route::post('/students/list/download', [StudentController::class, 'download'])->name('students.excel');
     // comparison chart
     Route::post('/expense/income/data',[IncomeController::class, 'comparisonData']);
 });
