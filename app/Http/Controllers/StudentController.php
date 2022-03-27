@@ -100,6 +100,7 @@ class StudentController extends Controller
             'image' =>  'required|image|mimes:jpeg,png,jpg,gif'
         ]);
 
+
         // Create new one
         $student = new Student();
         $student->name = $request->name;
@@ -110,6 +111,9 @@ class StudentController extends Controller
         $request->image->move(public_path('backend/images/students/'), $imageName);
         // save profile pic
         $lastImage = 'backend/images/students/'.$imageName;
+
+        $student->addMedia('backend/images/students/'.$imageName)
+        ->toMediaCollection('backend/images/students/');
         $student->avatar_url = $lastImage;
         $student->save();
 
@@ -133,6 +137,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
+        return $student->getFirstMediaUrl('images', 'thumb');
         return view('user.pages.students.edit',compact('student'));
     }
 
