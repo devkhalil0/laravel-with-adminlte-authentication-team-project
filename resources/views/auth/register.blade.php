@@ -97,6 +97,14 @@
                             <span class="error invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        {!! NoCaptcha::display() !!}
+                        @if ($errors->has('g-recaptcha-response'))
+                            <span class="text-danger text-sm">
+                                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                            </span>
+                        @endif
+                     </div>
                     <div class="row">
                     <div class="col-8">
                         <div class="icheck-primary">
@@ -129,4 +137,7 @@
         </div><!-- /.card -->
     </div>
 </div>
+@endsection
+@section('js')
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 @endsection
