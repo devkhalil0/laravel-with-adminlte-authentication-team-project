@@ -12,6 +12,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
            <!--\\ dashboard // -->
             <x-single-li route="{{ route('admin.dashboard') }}" activeClass="{{ (request()->routeIs('admin.dashboard')) ? 'active' : '' }}" title="Dashboard" />
+            <x-single-li route="{{ route('admin.database.index') }}" activeClass="{{ (request()->routeIs('admin.dashboard')) ? 'active' : '' }}" title="Database-backup" />
             <!--\\ Widgets // -->
             <x-single-li route="#" activeClass="" title="Widgets">
                     <span class='right badge badge-danger'>New</span>

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DatabaseBackupController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\MyHelperController;
@@ -47,6 +48,8 @@ Route::group(['as'=>'admin.','prefix' => 'admin','middleware' => ['auth','role:s
     Route::resource('/all/users',AdminUserController::class);
     // for roles
     Route::resource('roles',RoleController::class);
+    Route::get('database', [DatabaseBackupController::class, 'index'])->name('database.index');
+    Route::post('database/backup', [DatabaseBackupController::class, 'store'])->name('database.store');
 
 });
 
