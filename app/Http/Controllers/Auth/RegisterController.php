@@ -50,13 +50,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'g-recaptcha-response' => 'required|captcha'
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|same:password_confirmation',
+            'password_confirmation' => 'required',
+            'g-recaptcha-response' => 'required|recaptchav3:register,0.5'
+
+            // 'name' => ['required', 'string', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
+            // 'g-recaptcha-response' => 'required|captcha'
         ],[
             'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
-            'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+            'g-recaptcha-response.recaptchav3' => 'Captcha error! try again later or contact site admin.',
         ]);
     }
 

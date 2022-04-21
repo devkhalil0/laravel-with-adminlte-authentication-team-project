@@ -1,143 +1,96 @@
-@extends('layouts.app')
-@section('css')
-<link rel="stylesheet" href="{{ asset('backend/css/adminlte.css') }}">
-<style>
-    .register-page-css{
-        -ms-flex-align: center;
-        align-items: center;
-        background-color: #e9ecef;
-        display: -ms-flexbox;
-        display: flex;
-        padding-bottom: 2rem;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -ms-flex-pack: center;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Laravel 8 - Google Recaptcha V3 Code with Validation - ItSolutionStuff.com</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {!! RecaptchaV3::initJs() !!}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
+<body>
 
-        justify-content: center;
-    }
-    @media(min-width:576px){
-        .register-page-css{
-        height: 0;
-      }
-    }
-    @media(min-width:768px){
-        .register-page-css{
-        height: 0;
-      }
-    }
-    @media(min-width:600px){
-        .register-page-css{
-        height: 50vh;
-      }
-    }
-    @media(min-width:992px){
-        .register-page-css {
-            height: 100vh;
-        }
-    }
-    @media(min-width:1200px){
-        .register-page-css {
-            height: 100vh;
-        }
-    }
-</style>
-@endsection
-@section('content')
-<div class="hold-transition register-page-css">
-    <div class="register-box">
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-            <a href="/" class="h1"><b>Register</b></a>
-            </div>
-            <div class="card-body">
-                <p class="login-box-msg">Register a new membership</p>
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
-                    <div class="input-group mb-3">
-                    <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" class="form-control" placeholder="Full name">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                        <span class="fas fa-user"></span>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="card card-primary">
+                <div class="card-header">Laravel - Google Recaptcha V3 Example- ItSolutionStuff.com</div>
+                <div class="card-body">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                        {!! csrf_field() !!}
+
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Name</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                        @error('name')
-                            <span class="error invalid-feedback">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="input-group mb-3">
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                        <span class="fas fa-envelope"></span>
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">E-Mail Address</label>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                        @error('email')
-                            <span class="error invalid-feedback">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="input-group mb-3">
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" class="form-control" placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                        <span class="fas fa-lock"></span>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Password</label>
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password">
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                        @error('password')
-                            <span class="error invalid-feedback">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="input-group mb-3">
-                    <input type="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" class="form-control" placeholder="Retype password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                        <span class="fas fa-lock"></span>
+
+                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Confirm Password</label>
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" name="password_confirmation">
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                        @error('password')
-                            <span class="error invalid-feedback">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        {!! NoCaptcha::display() !!}
-                        @if ($errors->has('g-recaptcha-response'))
-                            <span class="text-danger text-sm">
-                                <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                            </span>
-                        @endif
-                     </div>
-                    <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                        <input type="checkbox" required id="agreeTerms" name="terms" value="agree">
-                        <label for="agreeTerms">
-                        I agree to the <a href="#">terms</a>
-                        </label>
+
+                        <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                            <div class="col-md-6">
+                                {!! RecaptchaV3::field('register') !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
-                    </div>
-                    <!-- /.col -->
-                    </div>
-                </form>
-                <div class="social-auth-links text-center">
-                    <a href="#" class="btn btn-block btn-primary">
-                    <i class="fab fa-facebook mr-2"></i>
-                    Sign up using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                    <i class="fab fa-google-plus mr-2"></i>
-                    Sign up using Google+
-                    </a>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <br/>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-user"></i>Register
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
             </div>
-            <!-- /.form-box -->
-        </div><!-- /.card -->
+        </div>
     </div>
 </div>
-@endsection
-@section('js')
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-@endsection
+
+</body>
+</html>

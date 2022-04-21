@@ -11,6 +11,7 @@
         "biscolab/laravel-recaptcha": "^5.3",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "josiasmontag/laravel-recaptchav3": "^1.0",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",

@@ -16,6 +16,7 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        {!! RecaptchaV3::initJs() !!}
     </head>
     <body class="antialiased">
         <div id="app" class="">
